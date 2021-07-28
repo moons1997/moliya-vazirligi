@@ -1,0 +1,151 @@
+.login {
+  position: relative;
+  height: 100vh;
+}
+
+.login-content {
+  position: absolute;
+  top: 50%;
+}
+
+.error-msg {
+  color: red;
+  margin-top: 5px;
+}
+
+.box-outlin {
+  border-radius: 5px;
+  padding: 0 10px;
+  width: 70px;
+  display: inline-block;
+}
+
+.box-outlin.active {
+  border: 1px solid #2192ee;
+  color: #2192ee;
+}
+
+.box-outlin.passive {
+  border: 1px solid #ee2121;
+  color: #ee2121;
+}
+
+.progress {
+  height: 200px;
+  position: relative;
+}
+
+.progress div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.table-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.table-top .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.table-top .search div {
+  margin-left: 0;
+  width: 100%;
+}
+
+.table-top .search button {
+  -webkit-transform: translateX(-40px);
+          transform: translateX(-40px);
+}
+
+.btn {
+  text-decoration: none;
+  color: #151515;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.secondary {
+  background-color: #f57f17;
+  color: #151515;
+}
+
+.secondary:hover {
+  background-color: #f57f173f;
+}
+
+.primary {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.primary:hover {
+  background-color: #99cbf586;
+}
+
+.sucees {
+  display: inline-block;
+  background-color: #137c32;
+  color: #fff;
+}
+
+.sucees:hover {
+  background-color: #137c3269;
+}
+
+.danger {
+  display: inline-block;
+  background-color: #f02a2a;
+  color: #fff;
+}
+
+.danger:hover {
+  background-color: #f02a2a48;
+  cursor: pointer;
+}
+
+.bank-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.combo-box {
+  margin-bottom: 15px;
+}
+
+.combo-box .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+  padding: 0;
+}
+
+.full-need {
+  color: #f02a2a;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,109 @@
+.login {
+  position: relative;
+  height: 100vh;
+
+  &-content {
+    position: absolute;
+    top: 50%;
+  }
+}
+.error-msg {
+  color: red;
+  margin-top: 5px;
+}
+.box-outlin {
+  border-radius: 5px;
+  padding: 0 10px;
+  width: 70px;
+  display: inline-block;
+}
+.box-outlin.active {
+  border: 1px solid rgb(33, 146, 238);
+  color: rgb(33, 146, 238);
+}
+.box-outlin.passive {
+  border: 1px solid rgb(238, 33, 33);
+  color: rgb(238, 33, 33);
+}
+.progress {
+  height: 200px;
+  position: relative;
+  div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+.table-top {
+  display: flex;
+  justify-content: space-between;
+  .search {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    div {
+      margin-left: 0;
+      width: 100%;
+    }
+    button {
+      transform: translateX(-40px);
+    }
+  }
+}
+.btn {
+  text-decoration: none;
+  color: #151515;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.secondary {
+  background-color: #f57f17;
+  color: #151515;
+  &:hover {
+    background-color: #f57f173f;
+  }
+}
+.primary {
+  background-color: #2196f3;
+  color: #fff;
+  &:hover {
+    background-color: #99cbf586;
+  }
+}
+.sucees {
+  display: inline-block;
+  background-color: #137c32;
+  color: #fff;
+  &:hover {
+    background-color: #137c3269;
+  }
+}
+.danger {
+  display: inline-block;
+  background-color: #f02a2a;
+  color: #fff;
+  &:hover {
+    background-color: #f02a2a48;
+    cursor: pointer;
+  }
+}
+
+.bank-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.combo-box {
+  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    padding: 0;
+  }
+  margin-bottom: 15px;
+}
+.full-need {
+  color: #f02a2a;
+}
