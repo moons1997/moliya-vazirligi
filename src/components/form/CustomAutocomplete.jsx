@@ -18,6 +18,8 @@ const useStyles = makeStyles({
 const CustomAutocomplete = (props) => {
   const { options, placeholder, handleChange, name, label, value, ...rest } = props;
   const classes = useStyles();
+  const defultVall = options.filter((option) => option.bankname == value)[0];
+  console.log('>>>>>', defultVall);
   return (
     <div className="combo-box">
       <Autocomplete
@@ -28,6 +30,7 @@ const CustomAutocomplete = (props) => {
         getOptionLabel={(option) => option.name}
         style={{ paddingRight: 0 }}
         name={name}
+        defaultValue={defultVall}
         renderInput={(params) => (
           <>
             <label htmlFor={name}>
