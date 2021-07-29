@@ -5,6 +5,11 @@ const ContractReducer = (state, action) => {
         ...state,
         [action.field]: action.payload,
       };
+    case "ADD_ACCOUNTS_TEXT":
+      return {
+        ...state,
+        accounts: [...state.accounts, action.payload],
+      };
 
     default:
       return state;

@@ -140,7 +140,6 @@ const Contract = () => {
     getContractList(search, sortColumn, orderType, page + 1, rowsPerPage);
     setDel("");
   };
-  console.log(contractlist);
 
   const GenerateTableRow = (prop) => {
     if (prop.load) {
@@ -175,7 +174,7 @@ const Contract = () => {
         </TableCell>
         <TableCell align="center">
           <Box component="span" marginRight="10px">
-            <Link className="btn sucees" to={`/admin/bank/${row.id}`}>
+            <Link className="btn sucees" to={`/admin/contract/${row.id}`}>
               <EditIcon />
             </Link>
           </Box>
