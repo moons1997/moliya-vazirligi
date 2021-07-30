@@ -30,7 +30,7 @@ import Toast from "components/Toast";
 import componentStyles from "assets/theme/views/admin/dashboard.js";
 import ContractReducer from "components/Reducer/ContractReducer";
 import { Link } from "react-router-dom";
-// import Joi from 'joi-browser';
+import Joi from "joi-browser";
 
 // icons
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -116,11 +116,11 @@ const ContractAdd = ({ match }) => {
     }
   }, []);
 
-  useEffect(() => {
-    const curentObl = oblast.filter((item) => item.id == curentOblId)[0];
+  // useEffect(() => {
+  //   const curentObl = oblast.filter((item) => item.id == curentOblId)[0];
 
-    // setCurentOblast(curentObl.fullname);
-  }, [oblast]);
+  //   setCurentOblast(curentObl.fullname);
+  // }, [oblast]);
 
   const GetBank = async () => {
     const data = await axios.get("/Bank/GetList");
@@ -216,7 +216,7 @@ const ContractAdd = ({ match }) => {
 
   /*----------Restart----------*/
 
-  const [errors, setErrors] = useState(null);
+  const [errors, setErrors] = useState(initialAccounts);
   const [curentOblast, setCurentOblast] = useState("");
 
   const [data, setData] = useState(initialData);
@@ -259,6 +259,15 @@ const ContractAdd = ({ match }) => {
   };
 
   const handleSubmitContract = (e) => {
+    let Errors = validation();
+    setErrors(Errors ?? {});
+    // console.log("---------", contractState);
+    // console.log("+++++++++", Errors);
+    // if (Errors) {
+    //   Errors.accounts && Toast({ message: Errors.accounts, type: false });
+    // }
+    if (Errors) return;
+
     e.preventDefault();
     AddContract(contractState);
   };
@@ -314,6 +323,7 @@ const ContractAdd = ({ match }) => {
     });
     handleClose();
   };
+
   const handleAddAccounts = () => {
     dispatch({
       type: "ADD_ACCOUNTS_TEXT",
@@ -366,6 +376,35 @@ const ContractAdd = ({ match }) => {
           </TableRow>
         )
     );
+  };
+  const validateSchema = {
+    id: Joi.number().allow(""),
+    shortname: Joi.string().required(),
+    fullname: Joi.string().required(),
+    inn: Joi.string().required(),
+    adress: Joi.string().required(),
+    vatcode: Joi.string().required(),
+    contactinfo: Joi.string().required(),
+    mobilenumber: Joi.string().required(),
+    oblastid: Joi.number().required(),
+    regionid: Joi.number().required(),
+    accounter: Joi.string().required(),
+    director: Joi.string().required(),
+    oked: Joi.string().required(),
+    isbudget: Joi.bool().allow(""),
+    accounts: Joi.array().allow(""),
+    branches: Joi.array().allow(""),
+  };
+  const validation = () => {
+    let res = Joi.validate(contractState, validateSchema, {
+      abortEarly: false,
+    });
+
+    if (!res.error) return null;
+    let Errors = {};
+
+    res.error.details.map((err) => (Errors[err.path[0]] = err.message));
+    return Errors;
   };
 
   // console.log('=====', curentOblast, curentOblId);
@@ -420,6 +459,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.inn}
+                        errors={errors.inn}
                       />
                     </Grid>
 
@@ -433,6 +473,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.shortname}
+                        errors={errors.shortname}
                       />
                     </Grid>
 
@@ -446,6 +487,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.fullname}
+                        errors={errors.fullname}
                       />
                     </Grid>
                   </Grid>
@@ -466,6 +508,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.vatcode}
+                        errors={errors.vatcode}
                       />
                     </Grid>
                     <Grid item xs={4}>
@@ -478,6 +521,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.adress}
+                        errors={errors.adress}
                       />
                     </Grid>
                     <Grid item xs={4}>
@@ -490,6 +534,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.contactinfo}
+                        errors={errors.contactinfo}
                       />
                     </Grid>
                   </Grid>
@@ -508,6 +553,7 @@ const ContractAdd = ({ match }) => {
                         options={oblast}
                         handleChange={handleTextChange}
                         value={contractState.oblastid}
+                        errors={errors.oblastid}
                       />
                     </Grid>
                     <Grid item xs={4}>
@@ -519,6 +565,7 @@ const ContractAdd = ({ match }) => {
                         curentOblast={curentOblast}
                         handleChange={handleTextChange}
                         value={contractState.regionid}
+                        errors={errors.regionid}
                       />
                     </Grid>
                     <Grid item xs={4}>
@@ -531,6 +578,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.mobilenumber}
+                        errors={errors.mobilenumber}
                       />
                     </Grid>
                   </Grid>
@@ -551,6 +599,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.oked}
+                        errors={errors.oked}
                       />
                     </Grid>
                     <Grid item xs={4}>
@@ -563,6 +612,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.director}
+                        errors={errors.director}
                       />
                     </Grid>
                     <Grid item xs={4}>
@@ -575,6 +625,7 @@ const ContractAdd = ({ match }) => {
                         handleChange={handleTextChange}
                         Icon={null}
                         value={contractState.accounter}
+                        errors={errors.accounter}
                       />
                     </Grid>
                   </Grid>
