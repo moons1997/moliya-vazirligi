@@ -4,22 +4,15 @@
   "author": "Creative Tim",
   "license": "MIT",
   "description": "Material UI version of Argon Dashboard React by Creative Tim",
-  "homepage": "https//moons1997.github.io/moliya-vazirligi",
-  "bugs": {
-    "url": "https://github.com/creativetimofficial/argon-dashboard-material-ui/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/creativetimofficial/argon-dashboard-material-ui.git"
-  },
+  "homepage": "https://moons1997.github.io/moliya-vazirligi",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build && gulp licenses",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
   "dependencies": {
     "@emotion/react": "11.1.5",
