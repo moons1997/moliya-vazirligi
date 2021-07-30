@@ -86,6 +86,7 @@ const BankAdd = ({ match }) => {
         stateid: values.stateid,
         id: id > 0 ? id : 0,
       });
+      console.log(data);
       if (data.data.success) {
         history.push("/admin/bank");
         Toast({ message: "Success ", type: true });
@@ -141,6 +142,7 @@ const BankAdd = ({ match }) => {
                 validationSchema={validation}
                 onSubmit={(values) => {
                   BankAdd(values);
+                  console.log(">>>>>>", values);
                 }}
               >
                 {(formik) => (
@@ -201,14 +203,15 @@ const BankAdd = ({ match }) => {
                           name="stateid"
                           items={[
                             {
-                              name: "Актив",
-                              value: 1,
+                              fullname: "Актив",
+                              id: 1,
                             },
                             {
-                              name: "Пассив",
-                              value: 2,
+                              fullname: "Пассив",
+                              id: 2,
                             },
                           ]}
+                          customValue={false}
                         />
                       </Grid>
                     </Grid>

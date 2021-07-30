@@ -41,7 +41,7 @@ import ControlPointIcon from "@material-ui/icons/ControlPoint";
 import componentStyles from "assets/theme/views/admin/dashboard.js";
 import { contextApi } from "context/GlobalContext";
 
-// import Toast from "components/Toast";
+import Toast from "components/Toast";
 import { ToastContainer } from "react-toastify";
 
 const useStyles = makeStyles(componentStyles);
@@ -130,13 +130,17 @@ const Contract = () => {
 
   const emptyRows = contractlist.rows.length < 1;
 
-  const DeleteBankData = async (id) => {
-    const data = await axios.delete("/Bank/Delete", {
+  const DelContract = async (id) => {
+    const { data } = await axios.delete("/Contractor/Delete", {
       params: {
         id,
       },
     });
-    // console.log(data);
+    if (data.success) {
+      Toast({ message: "Success ", type: true });
+    } else {
+      Toast({ message: data.error, type: false });
+    }
     getContractList(search, sortColumn, orderType, page + 1, rowsPerPage);
     setDel("");
   };
@@ -222,7 +226,7 @@ const Contract = () => {
           <Button
             onClick={() => {
               alertClose();
-              DeleteBankData(del);
+              DelContract(del);
             }}
             color="primary"
             autoFocus
